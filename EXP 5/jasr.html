@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOP Inheritance Demo</title>
+</head>
+<body>
+<h2>OOP Inheritance Demo</h2>
+<pre id="output"></pre>
+
+<script>
+class Person {
+  constructor(name, age) { this.name = name; this.age = age; }
+  greet() { return `Hi, I'm ${this.name}, ${this.age} years old.`; }
+}
+
+class Student extends Person {
+  constructor(name, age, grade) { super(name, age); this.grade = grade; }
+  greet() { return `Hi, I'm ${this.name}, a student in grade ${this.grade}.`; }
+}
+
+class Teacher extends Person {
+  constructor(name, age, subject) { super(name, age); this.subject = subject; }
+  greet() { return `Hello, I'm ${this.name}, and I teach ${this.subject}.`; }
+}
+
+const people = [
+  new Person('Alice', 40),
+  new Student('Bob', 16, 10),
+  new Teacher('Mr. Smith', 50, 'Math')
+];
+
+const output = document.getElementById('output');
+people.forEach(p => {
+  output.textContent += p.greet() + ' | Student? ' + (p instanceof Student) + ' | Teacher? ' + (p instanceof Teacher) + ' | Person? ' + (p instanceof Person) + '\n';
+});
+</script>
+</body>
+</html>
